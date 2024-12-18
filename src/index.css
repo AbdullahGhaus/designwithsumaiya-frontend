@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "cooper";
+    src: url(assets/font.TTF);
+}
+
+body {
+    background-color: #fdfae7;
+}
+
+*,
+a,
+div,
+span,
+input,
+body,
+html {
+    font-family: "Rubik";
+}
+
+.rubik {
+    font-family: "Rubik", sans-serif;
+}
+
+.cooper {
+    font-family: 'cooper';
+}
+
+
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+}
