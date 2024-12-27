@@ -7,9 +7,7 @@ const MyWork = () => {
 
     const [work, setWork] = useState([]);
     const [loader, setLoader] = useState(false);
-
-    console.log(work);
-
+    
     const fetchMyWork = async () => {
         setLoader(true);
         const response = await fetch(`${appConfig.api_url}/projects`, {

@@ -35,7 +35,7 @@ const Login = () => {
 
     return (
         <Spin spinning={loader}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} className='p-5 md:p-0'>
                 <Card title="Panel Login" style={{ width: 500 }}>
                     <Form name="login" onFinish={onFinish} autoComplete="off">
                         <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>

@@ -50,7 +50,7 @@ const CategoryDetail = () => {
             <div className="items-center justify-center flex flex-wrap gap-10 my-10" data-aos-duration="2000" data-aos="zoom-in">
                 {imageUrls?.map(({ url, name, id }, index) => (
                     <div key={index} className="group relative overflow-hidden rounded-lg cursor-pointer" onClick={() => navigate(`/project/${id}`)}>
-                        <div className='absolute inset-0 bg-[#000000] opacity-0 group-hover:opacity-70 transition-all z-10 flex items-center justify-center' >
+                        <div className='absolute inset-0 bg-[#000000] opacity-70 md:opacity-0 md:group-hover:opacity-70 transition-all z-10 flex items-center justify-center' >
                             <div className="flex flex-col">
                                 <span className="text-white text-[12px] font-semibold tracking-[3px]">Project</span>
                                 <span className='text-white text-[40px] cooper tracking-[1px]'>{name}</span>
@@ -69,22 +69,35 @@ const CategoryDetail = () => {
 
     return (
         <Spin spinning={loader}>
-            <div className='pt-16 flex flex-col'>
-                <div className='flex items-center justify-center cooper text-[50px] tracking-[1px] py-14 text-white bg-custom-red border-b border-custom-army_green' data-aos-duration="2000" data-aos="fade-down">{location?.state?.name}.</div>
+            <div className='py-16 px-5 flex flex-col'>
+                <div className='flex items-center justify-center cooper text-[35px] md:text-[50px] text-center py-10 md:py-20 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">{location?.state?.name}.
+                </div>
+                {data?.length
+                    ? <CustomGallery
+                        imageUrls={data?.map(x => filterImageUrls(x?.files)[0]) // Access the first file from the `files` array
+                            .flat() // Flatten the array if it's nested
+                            .map((y, index) => {
+                                const name = data[index]?.name; // Use the `name` from the same `data` object
+                                const id = data[index]?._id; // Use the `name` from the same `data` object
+                                return {
+                                    id,
+                                    url: y,  // The image URL
+                                    name: name  // The name extracted from `x?.name`
+                                };
+                            })}
+                    />
+                    : <div className='flex flex-col gap-5 my-20'>
+                        <div className='flex flex-col items-center justify-center gap-3' data-aos="zoom-in" data-aos-duration="1250" >
+                            <span className='cooper text-[25px] md:text-[35px] text-custom-army_green text-center' >Projects Coming Soon!</span>
+                            <span className='text-[12px] md:text-[14px] text-custom-army_green text-center' >This category is currently being updated. Please check back soon for new and exciting projects.</span>
+                        </div>
+                        <div className='flex items-center justify-center' data-aos="zoom-in" data-aos-duration="1250">
+                            <button className='bg-[#ffb5d5] text-custom-army_green hover:bg-[#fdbdd9] transition-all px-4 py-2 text-[10px] md:text-[12px] rounded-full font-medium w-[150px]' onClick={() => navigate("/contact-me")}>Contact Me</button>
+                        </div>
+                    </div>
+                }
             </div>
-            <CustomGallery
-                imageUrls={data?.map(x => filterImageUrls(x?.files)[0]) // Access the first file from the `files` array
-                    .flat() // Flatten the array if it's nested
-                    .map((y, index) => {
-                        const name = data[index]?.name; // Use the `name` from the same `data` object
-                        const id = data[index]?._id; // Use the `name` from the same `data` object
-                        return {
-                            id,
-                            url: y,  // The image URL
-                            name: name  // The name extracted from `x?.name`
-                        };
-                    })}
-            />
+
         </Spin>
     )
 }

@@ -185,8 +185,6 @@ const CategorizeProjectFiles = ({ open, close, setReloader }) => {
             stories: stories
         }
 
-        console.log(body);
-
         setLoader(true)
         const response = await fetch(`${appConfig.api_url}/project/${open?.id}`, {
             method: "PUT",

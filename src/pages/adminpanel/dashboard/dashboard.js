@@ -20,6 +20,7 @@ const Dashboard = () => {
 
     const [categories, setCategories] = useState([])
     const [projects, setProjects] = useState([])
+    const [isMobile, setIsMobile] = useState(false);
     const [loaderCategories, setLoaderCategories] = useState(false)
     const [loaderProjects, setLoaderProjects] = useState(false)
     const [selectedProject, setSelectedProject] = useState({
@@ -468,18 +469,39 @@ const Dashboard = () => {
 
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+        };
+
+        checkMobile(); // Initial check
+        window.addEventListener('resize', checkMobile); // Recheck on resize
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
+    useEffect(() => {
         fetchCategories()
         fetchAllProjects()
         localStorage.setItem("selectedCategory", "All")
     }, [reloader])
 
-    return (
-        <AdminDashboard>
+    return isMobile
+        ? <AdminDashboard>
+            <div className="flex items-center justify-center h-[80vh]">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold">Dashboard Unavailable on Mobile</h1>
+                    <p className="text-gray-600 mt-2">Please access this page on a desktop device.</p>
+                </div>
+            </div>
+        </AdminDashboard>
+        : <AdminDashboard>
             <div className='flex flex-col gap-10'>
                 <CloudinaryUsage />
                 <Spin spinning={loaderCategories}>
                     <div className='flex flex-col gap-3 p-4 border shadow-md rounded-lg bg-white'>
-                        <div className='flex items-center justify-between'>
+                        <div className='flex flex-wrap items-center justify-between'>
                             <span className='text-[15px] font-bold'>Categories</span>
                             <div className="flex items-center justify-center gap-2">
                                 <button disabled={localStorage?.getItem("selectedCategory") === "All"} className='disabled:opacity-40 flex items-center justify-center gap-2 text-[12px] bg-slate-600 text-white px-3 py-2 rounded-md'
@@ -506,7 +528,7 @@ const Dashboard = () => {
                             pagination={false}
                             rowClassName={(record) => record?.name == localStorage.getItem("selectedCategory") ? "bg-green-200" : ""}
                             scroll={{
-                                y: "250px"
+                                y: "250px",
                             }} />
                     </div>
                 </Spin>
@@ -533,7 +555,6 @@ const Dashboard = () => {
                 <UpdateCategory open={isEditCategoryModalOpen} close={() => setIsEditCategoryModalOpen(false)} setReloader={setReloader} selectedCategory={selectedCategory} />
             </div>
         </AdminDashboard>
-    )
 }
 
 export default Dashboard

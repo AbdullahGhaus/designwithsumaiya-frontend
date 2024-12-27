@@ -1,7 +1,6 @@
-import { Form, Image, Input, Spin } from 'antd'
+import { Form, Image, Input, message, Spin } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { BsMailbox } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import appConfig from '../utils/config'
 
 const ContactUs = () => {
 
@@ -9,28 +8,44 @@ const ContactUs = () => {
     const [loader, setloader] = useState(false)
 
     const onFinish = async (values) => {
-        console.log(values);
-    }
+        setloader(true)
+        const response = await fetch(`${appConfig.api_url}/mail`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem("access-token")
+            },
+            body: JSON.stringify(values)
+        });
+        setloader(false)
+        let result = await response.json()
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+        if (result?.success) {
+            message.success("Qoute sent successfully!")
+            form.resetFields()
+            window?.scrollTo(0, 0)
+        }
+        else {
+            message.error(result?.message)
+        }
+    }
 
     return (
         <div className='pt-16 flex flex-col'>
-            <div className='flex flex-col items-center justify-center gap-3 py-14 border-b border-custom-army_green bg-custom-red' >
-                <div className='cooper text-[50px] tracking-[1px] text-white ' data-aos-duration="2000" data-aos="fade-down">Hi, lets connect!</div>
+            <div className='flex items-center justify-center gap-3 py-10' >
+                <div className='cooper text-[35px] text-center md:text-[50px] md:pt-12 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">Hi, lets connect!</div>
             </div>
-            <div className='p-20' data-aos="zoom-in" data-aos-duration="2500">
+            <div className='p-5 md:p-20' data-aos="zoom-in" data-aos-duration="2500">
                 <Spin
                     className={`bg-[#017a7409] h-full w-full`}
-                    spinning={false}
+                    spinning={loader || false}
                 >
                     <Form
                         form={form}
                         name="contact"
                         layout="vertical"
                         onFinish={onFinish}
+
                         className="w-full"
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -39,7 +54,7 @@ const ContactUs = () => {
                                 label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Name</span>}
                                 rules={[{ required: true, message: 'Please enter your name' }]}
                             >
-                                <Input className='p-4 outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your name' />
+                                <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your name' />
                             </Form.Item>
 
                             <Form.Item
@@ -50,7 +65,7 @@ const ContactUs = () => {
                                     { type: 'email', message: 'Please enter a valid email' },
                                 ]}
                             >
-                                <Input className='p-4 outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder="Enter your email address" />
+                                <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder="Enter your email address" />
                             </Form.Item>
                         </div>
 
@@ -60,7 +75,7 @@ const ContactUs = () => {
                                 label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Contact No.</span>}
                                 rules={[{ required: true, message: 'Please enter your contact number' }, { pattern: /^(\+?\d{1,4})?((?!000)\d{10,12})$/, message: 'Please enter valid contact number' }]}
                             >
-                                <Input className='p-4 outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your contact number' />
+                                <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your contact number' />
                             </Form.Item>
 
                             <Form.Item
@@ -68,16 +83,16 @@ const ContactUs = () => {
                                 label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Subject</span>}
                                 rules={[{ required: true, message: 'Please enter the subject' }]}
                             >
-                                <Input className='p-4 outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter subject here' />
+                                <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter subject here' />
                             </Form.Item>
                         </div>
 
                         <Form.Item
                             name="message"
                             label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>How can I help you?</span>}
-                            rules={[{ required: false, message: 'Please enter your message' }]}
+                            rules={[{ required: true, message: 'Please enter your message' }]}
                         >
-                            <Input.TextArea rows={4} className='p-4 outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your message here' />
+                            <Input.TextArea rows={4} className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your message here' />
                         </Form.Item>
 
                         <div className='flex items-center justify-end my-3'>

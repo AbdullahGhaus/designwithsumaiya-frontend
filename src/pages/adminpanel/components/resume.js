@@ -67,7 +67,6 @@ const Resume = () => {
     }, [])
 
     const onFinish = async (values) => {
-        console.log('Form Values:', values);
         let body = {
             ...values,
             skills: values?.skills?.join()

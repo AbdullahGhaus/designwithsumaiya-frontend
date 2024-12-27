@@ -57,78 +57,58 @@ const Footer = ({ page = "default" }) => {
 
 
   return (
-    <footer className="flex flex-col">
-      {/* Contact Us Section */}
-      {window.location.pathname !== "/contact-us" ? (
-        <div className='flex flex-col gap-5 py-10 md:py-20 bg-custom-creame map_bg bg-contain bg-no-repeat bg-center'>
-          <div className='flex items-center justify-center' data-aos="zoom-in" data-aos-duration="2000">
-            <span className='text-center font-semibold text-xl md:text-2xl lg:text-3xl w-[90%] md:w-[60%] lg:w-[35%] cooper text-custom-army_green uppercase'>
-              Feel free to get in touch if I can be of any assistance
-            </span>
-          </div>
-          <div className='flex items-center justify-center' data-aos="zoom-in" data-aos-duration="2000">
-            <div className="flex items-center justify-center w-[100px] h-[100px] rounded-full bg-custom-army_green text-custom-creame uppercase text-center cursor-pointer" onClick={() => navigate("/contact-me")}>Contact Me</div>
-          </div>
-        </div>
-      ) : null}
+    <footer className="flex flex-col border-t-[0.75px] border-black">
 
-      {/* Footer Details Section */}
-      <div className="bg-custom-army_green py-10 md:py-[80px] flex justify-center text-custom-creame">
+      <div className="bg-custom-main_creame py-10 md:py-[80px] flex justify-center text-[#bb967d]">
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-5 lg:ml-32 justify-center w-[90%] md:w-[80%]'>
-          {/* Logo and Details */}
+
           <div className='flex flex-col justify-between gap-5'>
             <div className='flex flex-col' data-aos="fade-right" data-aos-duration="1000">
-              <img src={logo} alt="Logo" className="w-[80px] md:w-[150px] ml-[-17px]" />
-              <span className='text-[12px] w-full md:w-[80%]'>A social-first creative and performance partner for consumer brands.</span>
+              <img src={logo} alt="Logo" className="w-[200px] md:w-[250px] md:ml-[-17px] mt-[25px]" />
             </div>
             {details?.map((x, i) => (
               <div key={i} className='flex items-start gap-1' data-aos="fade-right" data-aos-duration="1200">
-                <span className='text-[12px] font-semibold'>{x.head}:</span>
-                <span className='text-[12px]'>{x.description}</span>
+                <span className='text-[12px] text-custom-main_green font-semibold'>{x.head}:</span>
+                <span className='text-[12px] text-black transition-all hover:-translate-y-[2px]'>{x.description}</span>
               </div>
             ))}
           </div>
-
-          {/* Services Section */}
-          <div className='flex flex-col justify-between gap-2' data-aos="fade-right" data-aos-duration="1500">
-            <span className='text-[16px] md:text-[20px] text-custom-creame font-medium h-[53px] pt-2 md:pt-5'>
+          <div className='hidden md:flex md:flex-col md:justify-between md:gap-2' data-aos="fade-right" data-aos-duration="1500">
+            <span className='text-[16px] md:text-[20px] text-custom-main_green font-semibold h-[53px] pt-2 md:pt-5'>
               I Offer
             </span>
             {services?.map((x, i) => (
-              <span key={i} onClick={() => navigate("/portfolio")} className='text-[12px] capitalize hover:text-custom-creame cursor-pointer transition-all hover:-translate-y-[2px]'>
+              <span key={i} onClick={() => navigate("/portfolio")} className='text-[12px] max-w-fit text-[black] capitalize cursor-pointer transition-all hover:-translate-y-[2px]'>
                 {x}
               </span>
             ))}
           </div>
 
-          {/* Quick Links Section */}
+
           <div className='flex flex-col gap-3' data-aos="fade-right" data-aos-duration="1700">
-            <span className='text-[16px] md:text-[20px] text-custom-creame font-medium h-[53px] pt-2 md:pt-5'>
+            <span className='text-[16px] md:text-[20px] text-custom-main_green font-semibold h-[53px] pt-2 md:pt-5'>
               Quick Links
             </span>
             {links?.map((x, i) => (
               <span
                 key={i}
                 onClick={() => navigate(x.link)}
-                className='text-[12px] capitalize hover:text-custom-creame cursor-pointer transition-all hover:-translate-y-[2px]'
+                className='text-[12px] text-black capitalize cursor-pointer max-w-fit transition-all hover:-translate-y-[2px]'
               >
                 {x.name}
               </span>
             ))}
           </div>
 
-          <div className='flex flex-col gap-3 mt-5' data-aos="fade-right" data-aos-duration="2000">
-            <FaInstagram className='text-custom-army_green bg-custom-creame rounded-full text-[5px] p-[10px] w-[50px] h-[50px] cursor-pointer ' />
-            <FaPinterestP className='text-custom-army_green bg-custom-creame rounded-full text-[5px] p-[10px] w-[50px] h-[50px] cursor-pointer ' />
-            <BiLogoLinkedin className='text-custom-army_green bg-custom-creame rounded-full text-[5px] p-[10px] w-[50px] h-[50px] cursor-pointer ' />
-
+          <div className='flex md:flex-col gap-3 mt-5' data-aos="fade-right" data-aos-duration="2000">
+            <FaInstagram className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer ' />
+            <BiLogoLinkedin className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer ' />
           </div>
         </div>
       </div>
 
-      {/* Footer Bottom Section */}
-      <div className='flex justify-center bg-custom-army_green'>
-        <div className='w-[90%] md:w-[80%] py-3 text-center text-[14px] text-custom-creame'>
+      <div className='flex justify-center bg-custom-main_creame '>
+        <div className='w-[90%] md:w-[80%] py-5 text-center text-[10px] text-black'>
           Copyright © 2024 Design With Sumaiya. All Rights Reserved.
         </div>
       </div>

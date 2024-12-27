@@ -4,7 +4,7 @@ import logo from "../../../assets/images/logo.png";
 import CustomButton from '../../../components/buttons';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import { FacebookFilled, InstagramFilled, TwitterCircleFilled } from '@ant-design/icons';
+import { FacebookFilled, InstagramFilled, LinkedinFilled, TwitterCircleFilled } from '@ant-design/icons';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Header = () => {
     // Handle scroll to make the header sticky after scrolling
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 80) {
+            if (window.scrollY > 70) {
                 setIsSticky(true);
             } else {
                 setIsSticky(false);
@@ -31,30 +31,28 @@ const Header = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
 
+    const menuItems = ["/", "/about-me", "/portfolio", "/contact-me"]
+
     return (
-        <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 border-b border-black px-5 md:px-10 bg-custom-creame 
+        <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 py-3 border-b border-black px-5 md:px-10 bg-[#fcf4df] 
              ${isSticky ? 'fixed top-0 left-0 right-0 z-50  shadow-lg' : "absolute top-0 left-0 right-0 z-[10]"}
              `}
-            data-aos="fade-down"
-            data-aos-duration="1000"
         >
             {/* Logo */}
-            <div className={`relative ${isSticky ? "w-[90px]" : "md:w-[100px] w-[90px]"}`} data-aos="fade-down" data-aos-duration="1500">
-                {/* <div className={`absolute inset-0 bg-custom-creame z-0 ${isSticky ? "" : "shadow-lg"}`} /> */}
+            <div className={`relative ${isSticky ? "w-[80px] md:w-[100px]" : "md:w-[150px] w-[120px]"}`}>
                 <img src={logo} alt="Logo" className="w-full h-auto relative z-10 ml-[-10px]" />
             </div>
 
             {/* Desktop Menu */}
             <nav className='hidden md:flex items-center justify-center gap-2'>
-                {["/", "/about-me", "/portfolio", "/contact-me"].map((path, index) => (
+                {menuItems.map((path, index) => (
                     <span
                         key={index}
                         onClick={() => { navigate(path); window.scrollTo(0, 0); }}
                         className={`uppercase cursor-pointer text-center rubik font-medium  tracking-[0.2em] transition-all  rounded-full   px-4 py-2
-                            ${path === "/contact-me" ? "bg-custom-red border-custom-red text-white" : "text-custom-army_green border-custom-army_green hover:text-white hover:bg-custom-army_green"}
-                            ${isSticky ? "text-[10px] border" : "text-[10px] border"}
+                            ${path === window?.location?.pathname ? "bg-[#afbd78] border-[#afbd78] text-white" : "text-custom-army_green border-custom-army_green hover:text-white hover:bg-custom-army_green"}
+                            ${isSticky ? "text-[8px] border" : "text-[10px] border"}
                        `}
-                        data-aos="zoom-in" data-aos-duration="1000" data-aos-delay={`${index * 200}`}
                     >
                         {path === "/" ? "Home" : path.replace("/", "").replace("-", " ")}
                     </span>
@@ -63,7 +61,7 @@ const Header = () => {
 
             {/* Hamburger Menu for Mobile/Tablets */}
             <div className='md:hidden flex items-center justify-end'>
-                <button onClick={toggleDrawer} className={`${isSticky ? "text-black" : "text-white"}`}>
+                <button onClick={toggleDrawer} className={`${isSticky ? "text-custom-main_green" : "text-custom-main_green"}`}>
                     <AiOutlineMenu size={20} />
                 </button>
             </div>
@@ -86,13 +84,13 @@ const Header = () => {
                         <AiOutlineClose size={15} onClick={toggleDrawer} className='text-black' />
                     </div>
                     <div className='flex flex-col gap-5 mt-5'>
-                        {["/", "/about-us", "/services", "/contact-us"].map((path, index) => (
+                        {menuItems.map((path, index) => (
                             <span
                                 key={index}
                                 onClick={() => { navigate(path); toggleDrawer(); }}
                                 className={`ml-1 text-black font-medium text-[12px] cursor-pointer capitalize
                                  ${window.location.pathname === path
-                                        ? "underline underline-offset-8 decoration-2 decoration-custom-yellow font-bold"
+                                        ? "underline underline-offset-8 decoration-2 decoration-custom-main_green text-custom-main_green font-bold"
                                         : ""
                                     }`}
                             >
@@ -102,19 +100,13 @@ const Header = () => {
                     </div>
                     <div className='ml-1 flex items-center border-t border-t-[#B0B3BC] pt-2'>
                         <div className='flex items-center gap-4 mt-2'>
-                            <FacebookFilled className='text-[15px] text-custom-blue' />
-                            <InstagramFilled className='text-[15px] text-custom-blue' />
-                            <TwitterCircleFilled className='text-[15px] text-custom-blue' />
+                            <InstagramFilled className='text-[25px] text-custom-main_green' />
+                            <LinkedinFilled className='text-[25px] text-custom-main_green' />
                         </div>
                         {/* <CustomButton type="yellowFilled" text="Contact Us" className="mt-10" /> */}
                     </div>
                 </div>
             </Drawer>
-
-            {/* Contact Button on Desktop */}
-            {/* <div className='hidden md:flex items-center justify-end'>
-                <button onClickCustom={() => navigate("/contact-us")} className='bg-custom-creame px-4 py-3 rounded-lg text-custom-blue text-medium font-bold'>Lets Be Friends</button>
-            </div> */}
         </header>
     );
 };

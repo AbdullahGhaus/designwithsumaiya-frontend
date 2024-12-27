@@ -55,7 +55,7 @@ const AdminDashboard = ({children}) => {
     return (
         <Spin spinning={loader}>
             <div className='flex flex-col'>
-                <div className='bg-blue-950 py-1 px-2 text-white flex items-center justify-between'>
+                <div className='bg-custom-main_creame border-b py-3 px-4 text-black flex items-center justify-between'>
                     <Image preview={false} src={logo} width={100} />
                     <Button className='bg-red-400 text-white text-[12px]' onClick={onClickLogout}>Logout</Button>
                 </div>
