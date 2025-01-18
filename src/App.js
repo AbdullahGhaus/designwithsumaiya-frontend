@@ -18,6 +18,7 @@ import AboutMe from './pages/aboutMe.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ContactUs from './pages/contact.js';
+import AppErrorBoundary from './utils/ErrorBoundary.js';
 
 const App = () => {
 

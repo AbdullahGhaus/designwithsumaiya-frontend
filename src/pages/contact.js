@@ -33,7 +33,7 @@ const ContactUs = () => {
     return (
         <div className='pt-16 flex flex-col'>
             <div className='flex items-center justify-center gap-3 py-10' >
-                <div className='cooper text-[35px] text-center md:text-[50px] md:pt-12 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">Hi, lets connect!</div>
+                <div className='cooper text-[35px] text-center md:text-[40px] md:pt-12 text-black font-semibold' data-aos-duration="2000" data-aos="fade-down">Hi, lets connect!</div>
             </div>
             <div className='p-5 md:p-20' data-aos="zoom-in" data-aos-duration="2500">
                 <Spin
@@ -51,7 +51,7 @@ const ContactUs = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                             <Form.Item
                                 name="name"
-                                label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Name</span>}
+                                label={<span className='cooper text-black text-[10px] md:text-[18px] font-medium'>Name</span>}
                                 rules={[{ required: true, message: 'Please enter your name' }]}
                             >
                                 <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your name' />
@@ -59,7 +59,7 @@ const ContactUs = () => {
 
                             <Form.Item
                                 name="email"
-                                label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Email Address</span>}
+                                label={<span className='cooper text-black text-[10px] md:text-[18px] font-medium'>Email Address</span>}
                                 rules={[
                                     { required: true, message: 'Please enter your email address' },
                                     { type: 'email', message: 'Please enter a valid email' },
@@ -72,7 +72,7 @@ const ContactUs = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-3">
                             <Form.Item
                                 name="phone"
-                                label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Contact No.</span>}
+                                label={<span className='cooper text-black text-[10px] md:text-[18px] font-medium'>Contact No.</span>}
                                 rules={[{ required: true, message: 'Please enter your contact number' }, { pattern: /^(\+?\d{1,4})?((?!000)\d{10,12})$/, message: 'Please enter valid contact number' }]}
                             >
                                 <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your contact number' />
@@ -80,7 +80,7 @@ const ContactUs = () => {
 
                             <Form.Item
                                 name="subject"
-                                label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>Subject</span>}
+                                label={<span className='cooper text-black text-[10px] md:text-[18px] font-medium'>Subject</span>}
                                 rules={[{ required: true, message: 'Please enter the subject' }]}
                             >
                                 <Input className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter subject here' />
@@ -89,7 +89,7 @@ const ContactUs = () => {
 
                         <Form.Item
                             name="message"
-                            label={<span className='cooper text-custom-army_green text-[10px] md:text-[18px] font-medium'>How can I help you?</span>}
+                            label={<span className='cooper text-black text-[10px] md:text-[18px] font-medium'>How can I help you?</span>}
                             rules={[{ required: true, message: 'Please enter your message' }]}
                         >
                             <Input.TextArea rows={4} className='p-4 cooper outline-none shadow-none focus:shadow-none border-t-0 rounded-none border-x-0 text-[10px] md:text-sm' placeholder='Enter your message here' />

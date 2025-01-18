@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { message, Spin } from 'antd'
 import appConfig from '../../../../utils/config'
+import Loader from '../../../../components/loader'
 
 const CategoryDetail = () => {
 
@@ -68,8 +69,11 @@ const CategoryDetail = () => {
     };
 
     return (
-        <Spin spinning={loader}>
-            <div className='py-16 px-5 flex flex-col'>
+        loader
+            ? <div className='h-[100vh] bg-slate-100'>
+                <Loader page="services" />
+            </div>
+            : <div className='py-16 px-5 flex flex-col'>
                 <div className='flex items-center justify-center cooper text-[35px] md:text-[50px] text-center py-10 md:py-20 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">{location?.state?.name}.
                 </div>
                 {data?.length
@@ -98,7 +102,6 @@ const CategoryDetail = () => {
                 }
             </div>
 
-        </Spin>
     )
 }
 

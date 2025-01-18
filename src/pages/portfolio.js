@@ -2,6 +2,7 @@ import { message, Spin } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import appConfig from '../utils/config'
+import Loader from '../components/loader'
 
 const Portfolio = () => {
     const navigate = useNavigate()
@@ -66,9 +67,12 @@ const Portfolio = () => {
     );
 
     return (
-        <div className='flex flex-col py-14'>
-            <div className='flex items-center justify-center cooper text-[35px] sm:text-[50px] py-10 md:py-20 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
-            <Spin spinning={loader}>
+        loader
+            ? <div className='h-[100vh] bg-slate-100'>
+                <Loader page="services" />
+            </div>
+            : <div className='flex flex-col py-14'>
+                <div className='flex items-center justify-center cooper text-[35px] sm:text-[50px] py-10 md:py-20 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
                 <div className={`flex flex-col gap-10 sm:gap-20 my-10 px-5 sm:px-14 ${!services?.length ? "w-full h-[50vh]" : ""}`}>
                     {services?.length
                         ? services?.sort((a, b) => a?.sortOrder - b?.sortOrder)?.map((service, index) => <ComponentMap {...service} index={index} />)
@@ -83,8 +87,7 @@ const Portfolio = () => {
                         </div>
                     }
                 </div>
-            </Spin>
-        </div>
+            </div>
     )
 }
 

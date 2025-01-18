@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import logo from '../assets/images/logo.png';
 
-const Loader = () => {
+const Loader = ({ page = "default" }) => {
   const imageRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Loader = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3 justify-center items-center h-screen">
+    <div className={`flex flex-col gap-3 justify-center items-center ${page === "default" ? "h-screen" : "h-full"}`}>
       <div className="relative w-52 h-52 flex justify-center items-center">
         <img
           ref={imageRef}

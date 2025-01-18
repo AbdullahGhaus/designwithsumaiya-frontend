@@ -6,7 +6,7 @@ const Landing = () => {
         <div className='grid grid-cols-12 h-screen py-16 relative'>
             <div className='col-span-12 md:col-span-6 flex flex-col gap-14 justify-center px-5 md:px-10 pt-[-50px]'>
                 <div className='flex flex-col' data-aos="zoom-in" data-aos-duration="1000" data-aos-anchor-placement="top-bottom">
-                    <span className='cooper text-[28px] md:text-[40px] text-[#bb967d] font-semibold'>
+                    <span className='cooper text-[28px] md:text-[35px] text-[#bb967d] font-semibold'>
                         Hey - this is Sumaiya!
                     </span>
                     <span className='text-custom-army_green w-[90%] text-[12px] md:text-[16px]'>

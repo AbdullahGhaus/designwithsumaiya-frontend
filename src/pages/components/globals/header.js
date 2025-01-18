@@ -31,7 +31,7 @@ const Header = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
 
-    const menuItems = ["/", "/about-me", "/portfolio", "/contact-me"]
+    const menuItems = ["/", "/portfolio", "/about-me", "/contact-me"]
 
     return (
         <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 py-3 border-b border-black px-5 md:px-10 bg-[#fcf4df] 
