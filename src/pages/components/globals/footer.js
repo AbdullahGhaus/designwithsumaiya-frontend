@@ -101,15 +101,21 @@ const Footer = ({ page = "default" }) => {
           </div>
 
           <div className='flex md:flex-col gap-3 mt-5' data-aos="fade-right" data-aos-duration="2000">
-            <FaInstagram className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer ' />
-            <BiLogoLinkedin className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer ' />
+            <FaInstagram
+              className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
+              onClick={() => window.open("https://www.instagram.com/sumaiyadraws/", "_blank")}
+            />
+            <BiLogoLinkedin
+              className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
+              onClick={() => window.open("https://www.linkedin.com/in/sumaiya-ghani-736322221/", "_blank")}
+            />
           </div>
         </div>
       </div>
 
       <div className='flex justify-center bg-custom-main_creame '>
         <div className='w-[90%] md:w-[80%] py-5 text-center text-[10px] text-black'>
-          Copyright © 2024 Design With Sumaiya. All Rights Reserved.
+          Copyright © 2025 Design With Sumaiya. All Rights Reserved.
         </div>
       </div>
     </footer>

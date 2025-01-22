@@ -155,7 +155,6 @@ const SliderSection = () => {
                 {isVisible && ( // Only show content after 2 seconds
                     <div className="relative z-10 flex flex-col gap-10 justify-center items-center text-center h-full text-white px-4 animate-fadeInUp w-[100%] md:w-[60%] lg:w-[60%]">
                         <span className="text-[25px] leading-6 md:leading-normal md:text-[35px] font-semibold bg-[#ffffff18] px-4 py-1 rounded-full capitalize">{name}<span className='text-[50px] text-custom-yellow'>.</span></span>
-                        {/* <span className='text-[12px] md:text-[15px] w-[80%] md:w-[50%] mt-[-20px] text-white text-center  bg-[#ffffff18] px-4 py-1 rounded-md '>asdasdsadad  a a s d a sdsadadaasda s d s a d a daasdasd s a d a d aasdasdsad adaasdas dsadad aasd asdsa dadaas dasd sadadaasdasds a d a daasdasdsadad aasdasdsadadaasdasdsadada</span> */}
                         <button className="bg-custom-main_pink text-[#96272c] px-4 py-2 font-semibold rounded-full shadow text-[12px]" onClick={() => navigate(`/category/${_id}`, { state: { name } })}>
                             PROJECTS
                         </button>
@@ -203,29 +202,6 @@ const SliderSection = () => {
                         <ItemsContainer key={i} {...x} />
                     ))}
                 </Slider>
-
-                <div className="absolute left-0 top-0 bottom-0 w-10 bg-custom-main_creame hidden md:flex items-center justify-center transform origin-left" >
-                    <span className="text-black text-[12px] tracking-[10px] rotate-[-90deg]" >
-                        PORTFOLIO
-                    </span>
-                </div>
-                <div className="absolute right-0 top-0 bottom-0 w-10 bg-custom-main_creame hidden md:flex items-center justify-center transform origin-right" >
-                    <span className="text-black text-[12px] tracking-[10px] rotate-[90deg]">
-                        PORTFOLIO
-                    </span>
-                </div>
-
-                <div className="absolute bottom-5 left-0 right-0 text-center text-white">
-                    {services.map((_, index) => (
-                        <span
-                            key={index}
-                            onClick={() => handleSlideClick(index)}
-                            className={`mx-3  rounded-full text-[8px] md:text-[11px] relative ${currentSlide === index ? 'text-custom-yellow font-bold' : 'text-white'}`}
-                        >
-                            {index + 1}
-                        </span>
-                    ))}
-                </div>
             </section >
             : <div className='h-[90vh] bg-slate-100'>
                 <Loader page="services" />
