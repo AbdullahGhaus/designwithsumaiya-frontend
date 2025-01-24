@@ -92,7 +92,7 @@ const Dashboard = () => {
         {
             title: 'Projects',
             render: (_, record) => {
-                return <div className='flex items-center gap-2'>{
+                return <div className='flex items-center flex-wrap gap-2'>{
                     record?.projects?.length ? record?.projects?.map(x => <span className="rounded-lg max-w-fit px-2 py-1 text-white bg-slate-700 text-[10px] capitalize">{x?.name}</span>) : <span className="text-[10px]">No projects added yet</span>
                 }</div>
             }
@@ -528,7 +528,7 @@ const Dashboard = () => {
                             pagination={false}
                             rowClassName={(record) => record?.name == localStorage.getItem("selectedCategory") ? "bg-green-200" : ""}
                             scroll={{
-                                y: "250px",
+                                y: "400px",
                             }} />
                     </div>
                 </Spin>
@@ -543,7 +543,7 @@ const Dashboard = () => {
                             </button>
                         </div>
                         <Table dataSource={projects} columns={columns_projects} size='small' className='border' pagination={false} scroll={{
-                            y: "250px"
+                            y: "350px"
                         }} />
                     </div>
                 </Spin>

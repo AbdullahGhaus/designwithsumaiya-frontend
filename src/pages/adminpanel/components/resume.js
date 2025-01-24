@@ -112,7 +112,15 @@ const Resume = () => {
                     <div className='flex items-center justify-between'>
                         <div className="flex flex-col gap-2">
                             <span className='text-[12px] font-semibold'>Uploaded Resume File</span>
-                            {resume ? <Image src={resume?.url} width={100} height={100} className='object-cover' /> : <span className='text-[12px]'>No resume file uploaded on cloudinary</span>}
+                            {resume
+                                ? <div className='flex items-center gap-5'>
+                                    <span className='text-[12px] bg-custom-main_creame text-black px-3 py-2 rounded-md'>Resource type: {/\.pdf$/i.test(resume?.url) ? "PDF" : "Image"}</span>
+                                    <a href={resume?.url} target='_blank'>
+                                        <button className='flex items-center justify-center gap-2 text-[12px] bg-custom-main_green text-white px-3 py-2 rounded-md'>
+                                            View
+                                        </button></a>
+                                </div>
+                                : <span className='text-[12px]'>No resume file uploaded on cloudinary</span>}
                         </div>
                         <div className="flex items-center justify-center gap-2">
                             <button className='flex items-center justify-center gap-2 text-[12px] bg-slate-600 text-white px-3 py-2 rounded-md'

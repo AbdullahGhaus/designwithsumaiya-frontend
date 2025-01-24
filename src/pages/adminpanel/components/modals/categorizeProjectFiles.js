@@ -205,6 +205,9 @@ const CategorizeProjectFiles = ({ open, close, setReloader }) => {
             setImages([])
             setVideos([])
             setStories([{ files: [] }])
+            form.setFieldsValue({
+                stories: [{ files: [] }]
+            })
         }
         else {
             message.error(result?.message)
@@ -222,6 +225,9 @@ const CategorizeProjectFiles = ({ open, close, setReloader }) => {
                 setImages([])
                 setVideos([])
                 setStories([{ files: [] }])
+                form.setFieldsValue({
+                    stories: [{ files: [] }]
+                })
             }}
             title={`Manage ${project?.name}'s files`}
             footer={null}

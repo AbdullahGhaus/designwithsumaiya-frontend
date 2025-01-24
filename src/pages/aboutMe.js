@@ -28,7 +28,7 @@ const AboutMe = () => {
     }
 
     useEffect(() => {
-    fetchResume()
+        fetchResume()
     }, [])
 
     return (

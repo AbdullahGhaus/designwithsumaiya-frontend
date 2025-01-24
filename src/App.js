@@ -22,87 +22,33 @@ import AppErrorBoundary from './utils/ErrorBoundary.js';
 
 const App = () => {
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
-
   useEffect(() => {
     AOS.init();
   }, [])
 
-
+  const InWebRouteContainer = ({ children }) => {
+    return <div className='relative'>
+      <Header />
+      {children}
+      <Footer />
+    </div>
+  }
 
   return (
     <Router>
       <ScrollToTop />
-      {loading
-        ? <Loader />
-        : <Routes>
-          <Route
-            path="/"
-            element={
-              <div className='relative'>
-                <Header />
-                <Home />
-                <Footer />
-              </div>
-            } />
-          <Route
-            path="/portfolio"
-            element={
-              <div className='relative'>
-                <Header />
-                <Portfolio />
-                <Footer />
-              </div>
-            } />
-          <Route
-            path="/project/:id"
-            element={
-              <div className='relative'>
-                <Header />
-                <ProjectDetails />
-                <Footer />
-              </div>
-            } />
-          <Route
-            path="/category/:id"
-            element={
-              <div className='relative'>
-                <Header />
-                <CategoryDetail />
-                <Footer />
-              </div>
-            } />
-          <Route
-            path="/about-me"
-            element={
-              <div className='relative'>
-                <Header />
-                <AboutMe />
-                <Footer />
-              </div>
-            } />
-          <Route
-            path="/contact-me"
-            element={
-              <div className='relative'>
-                <Header />
-                <ContactUs />
-                <Footer />
-              </div>
-            } />
-          <Route path="/panel" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-
-        </Routes>
-      }
+      <Routes>
+        <Route path="/" element={<InWebRouteContainer><Home /></InWebRouteContainer>} />
+        <Route path="/portfolio" element={<InWebRouteContainer><Portfolio /></InWebRouteContainer>} />
+        <Route path="/project/:id" element={<InWebRouteContainer><ProjectDetails /></InWebRouteContainer>} />
+        <Route path="/category/:id" element={<InWebRouteContainer><CategoryDetail /></InWebRouteContainer>} />
+        <Route path="/about-me" element={<InWebRouteContainer><AboutMe /></InWebRouteContainer>} />
+        <Route path="/contact-me" element={<InWebRouteContainer><ContactUs /></InWebRouteContainer>} />
+        <Route path="/panel" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+      </Routes>
     </Router>
   );
 };
