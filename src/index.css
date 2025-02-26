@@ -11,6 +11,11 @@
     src: url(assets/font.TTF);
 }
 
+@font-face {
+    font-family: "calvino";
+    src: url(assets/calvino.ttf);
+}
+
 body {
     background-color: white;
 }
@@ -26,7 +31,7 @@ html {
     font-family: "Poppins" !important;
 }
 
-.poppins{
+.poppins {
     font-family: "Poppins", serif;
 }
 
@@ -38,6 +43,9 @@ html {
     font-family: 'Poppins';
 }
 
+.calvino {
+    font-family: "calvino" !important;
+}
 
 
 @keyframes spin-slow {

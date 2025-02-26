@@ -26,7 +26,7 @@ const Loader = ({ page = "default" }) => {
   }, []);
 
   return (
-    <div className={`flex flex-col gap-3 justify-center items-center ${page === "default" ? "h-screen" : "h-full"}`}>
+    <div className={`flex flex-col gap-3 justify-center items-center ${page === "default" ? "h-screen" : "h-full"} bg-black`}>
       <div className="relative w-52 h-52 flex justify-center items-center">
         <img
           ref={imageRef}

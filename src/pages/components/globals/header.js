@@ -34,8 +34,8 @@ const Header = () => {
     const menuItems = ["/", "/portfolio", "/about-me", "/contact-me"]
 
     return (
-        <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 py-3 border-b border-black px-5 md:px-10 bg-[#fcf4df] 
-             ${isSticky ? 'fixed top-0 left-0 right-0 z-50  shadow-lg' : "absolute top-0 left-0 right-0 z-[10]"}
+        <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 py-4 px-5 md:px-10 
+             ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-black bg-black' : "absolute top-0 left-0 right-0 z-[10] bg-transparent border-b border-transparent"}
              `}
         >
             {/* Logo */}
@@ -49,8 +49,8 @@ const Header = () => {
                     <span
                         key={index}
                         onClick={() => { navigate(path); window.scrollTo(0, 0); }}
-                        className={`uppercase cursor-pointer text-center rubik font-medium  tracking-[0.2em] transition-all  rounded-full   px-4 py-2
-                            ${path === window?.location?.pathname ? "bg-[#afbd78] border-[#afbd78] text-white" : "text-custom-army_green border-custom-army_green hover:text-white hover:bg-custom-army_green"}
+                        className={`uppercase cursor-pointer text-center calvino font-semibold tracking-[0.2em] transition-all  rounded-full   px-4 py-2
+                            ${path === window?.location?.pathname ? "bg-[#ec8ecf] border-[#ec8ecf] text-white" : "text-black bg-white border-white hover:border-[#ec8ecf] hover:bg-[#ec8ecf]"}
                             ${isSticky ? "text-[8px] border" : "text-[10px] border"}
                        `}
                     >

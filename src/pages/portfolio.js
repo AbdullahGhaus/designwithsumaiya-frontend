@@ -37,34 +37,35 @@ const Portfolio = () => {
 
     const ComponentMap = ({ name, projects, thumbnail, index, _id }) => (
         <div
-            className="relative bg-custom-main_creame w-full rounded-2xl shadow-md border border-custom-army_green grid grid-cols-1 sm:grid-cols-2 gap-5 p-5 cursor-pointer hover:shadow-2xl transition-all hover:bg-custom-light_creame"
+            className="relative w-full h-[80vh] cursor-pointer"
             onClick={() => navigate(`/category/${_id}`, { state: { name } })}
-            data-aos-duration="2000" data-aos="zoom-in"
+            data-aos-duration="2000"
+            data-aos="zoom-in"
         >
-            <div className="absolute top-4 left-4 w-5 h-5 bg-custom-main_green rounded-full"></div>
-            <div className="absolute top-4 right-4 w-5 h-5 bg-custom-main_green rounded-full"></div>
-            <div className="absolute bottom-4 right-4 w-5 h-5 bg-custom-main_green rounded-full"></div>
-            <div className="absolute bottom-4 left-4 w-5 h-5 bg-custom-main_green rounded-full"></div>
+            {/* Background Image */}
+            <img
+                src={thumbnail}
+                alt="Thumbnail"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl blur-sm"
+            />
 
-            <div className={`col-span-1 flex flex-col gap-5 justify-center px-5 ${index % 2 === 1 ? "order-2" : "order-1"}`}>
-                <div className="flex flex-col items-center justify-center">
-                    <span className="text-custom-main_green text-[10px] font-semibold tracking-[1px]">Service.</span>
+            {/* Heading Container */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                <div className='flex flex-col gap-1 items-center bg-custom-main_creame p-2 rounded-3xl'>
+                    {/* <span className="text-custom-main_green text-[10px] font-semibold tracking-[1px]">
+                        Service.
+                    </span> */}
                     <h2 className="text-[#917461] text-[20px] md:text-[30px] sm:text-[40px] font-semibold text-center">
                         {name}.
                     </h2>
                 </div>
             </div>
-            <div className={`flex items-center justify-center col-span-1 ${index % 2 === 1 ? "order-1" : "order-2"}`}>
-                <div className="w-full h-[200px] p-5 sm:p-5 sm:h-[550px]">
-                    <img
-                        src={thumbnail}
-                        alt="Thumbnail"
-                        className="w-full h-full object-cover rounded-2xl"
-                    />
-                </div>
-            </div>
+
+            {/* Optional Dark Overlay for Better Readability */}
+            <div className="absolute inset-0 bg-black bg-opacity-30 rounded-3xl"></div>
         </div>
     );
+
 
     return (
         loader

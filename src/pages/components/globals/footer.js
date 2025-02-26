@@ -57,9 +57,9 @@ const Footer = ({ page = "default" }) => {
 
 
   return (
-    <footer className="flex flex-col border-t-[0.75px] border-black">
+    <footer className="flex flex-col border-t-[0.75px] border-black bg-black ">
 
-      <div className="bg-custom-main_creame py-10 md:py-[80px] flex justify-center text-[#bb967d]">
+      <div className="py-10 md:py-[80px] flex justify-center text-[white]">
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-5 lg:ml-32 justify-center w-[90%] md:w-[80%]'>
 
           <div className='flex flex-col justify-between gap-5'>
@@ -68,17 +68,17 @@ const Footer = ({ page = "default" }) => {
             </div>
             {details?.map((x, i) => (
               <div key={i} className='flex items-start gap-1' data-aos="fade-right" data-aos-duration="1200">
-                <span className='text-[12px] text-custom-main_green font-semibold'>{x.head}:</span>
-                <span className='text-[12px] text-black transition-all hover:-translate-y-[2px]'>{x.description}</span>
+                <span className='text-[12px] text-[#ec8ecf] font-semibold'>{x.head}:</span>
+                <span className='text-[12px] text-white transition-all hover:-translate-y-[2px]'>{x.description}</span>
               </div>
             ))}
           </div>
           <div className='hidden md:flex md:flex-col md:justify-between md:gap-2' data-aos="fade-right" data-aos-duration="1500">
-            <span className='text-[16px] md:text-[20px] text-custom-main_green font-semibold h-[53px] pt-2 md:pt-5'>
+            <span className='text-[16px] md:text-[20px] text-[#ec8ecf] font-semibold h-[53px] pt-2 md:pt-5'>
               I Offer
             </span>
             {services?.map((x, i) => (
-              <span key={i} onClick={() => navigate("/portfolio")} className='text-[12px] max-w-fit text-[black] capitalize cursor-pointer transition-all hover:-translate-y-[2px]'>
+              <span key={i} onClick={() => navigate("/portfolio")} className='text-[12px] max-w-fit text-[white] capitalize cursor-pointer transition-all hover:-translate-y-[2px]'>
                 {x}
               </span>
             ))}
@@ -86,14 +86,14 @@ const Footer = ({ page = "default" }) => {
 
 
           <div className='flex flex-col gap-3' data-aos="fade-right" data-aos-duration="1700">
-            <span className='text-[16px] md:text-[20px] text-custom-main_green font-semibold h-[53px] pt-2 md:pt-5'>
+            <span className='text-[16px] md:text-[20px] text-[#ec8ecf] font-semibold h-[53px] pt-2 md:pt-5'>
               Quick Links
             </span>
             {links?.map((x, i) => (
               <span
                 key={i}
                 onClick={() => navigate(x.link)}
-                className='text-[12px] text-black capitalize cursor-pointer max-w-fit transition-all hover:-translate-y-[2px]'
+                className='text-[12px] text-white capitalize cursor-pointer max-w-fit transition-all hover:-translate-y-[2px]'
               >
                 {x.name}
               </span>
@@ -102,19 +102,19 @@ const Footer = ({ page = "default" }) => {
 
           <div className='flex md:flex-col gap-3 mt-5' data-aos="fade-right" data-aos-duration="2000">
             <FaInstagram
-              className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
+              className='text-custom-main_creame bg-[#ec8ecf] rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
               onClick={() => window.open("https://www.instagram.com/sumaiyadraws/", "_blank")}
             />
             <BiLogoLinkedin
-              className='text-custom-main_creame bg-custom-main_green rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
+              className='text-custom-main_creame bg-[#ec8ecf] rounded-full text-[5px] p-[10px] w-[50px]  h-[50px]  cursor-pointer '
               onClick={() => window.open("https://www.linkedin.com/in/sumaiya-ghani-736322221/", "_blank")}
             />
           </div>
         </div>
       </div>
 
-      <div className='flex justify-center bg-custom-main_creame '>
-        <div className='w-[90%] md:w-[80%] py-5 text-center text-[10px] text-black'>
+      <div className='flex justify-center'>
+        <div className='w-[90%] md:w-[80%] py-5 text-center text-[10px] text-white'>
           Copyright © 2025 Design With Sumaiya. All Rights Reserved.
         </div>
       </div>
