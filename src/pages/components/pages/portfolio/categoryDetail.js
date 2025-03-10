@@ -89,17 +89,17 @@ const CategoryDetail = () => {
             >
                 {imageUrls.map(({ url, name, id }, index) => (
                     <div
-                        className="relative flex-col items-center justify-center gap-3 flex cursor-pointer"
+                        className="relative flex-col items-center justify-center gap-3 flex cursor-pointer group"
                         onClick={() => navigate(`/project/${id}`)}
                         key={index}
                     >
-                        <div className="absolute inset-0 flex flex-col items-center justify-center z-[1]">
-                            <span className="text-[18px] text-center font-bold bg-custom-main_creame p-2 rounded-md text-custom-army_green shadow-md">{name}</span>
+                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/70 flex flex-col items-center justify-center z-[1] transition-all duration-300 ">
+                            <span className="text-[28px] text-center font-bold p-2 rounded-md text-white calvino tracking-wider">{name}</span>
                         </div>
                         <img
                             src={url || logo}
                             alt={`Gallery ${index}`}
-                            className={`w-[400px] h-[400px] blur-sm opacity-70 ${url ? "object-cover" : "object-contain"}`}
+                            className={`w-[400px] h-[400px]  ${url ? "object-cover" : "object-contain"}`}
                         />
 
 
@@ -113,53 +113,51 @@ const CategoryDetail = () => {
         <div className="h-[100vh] bg-slate-100">
             <Loader page="services" />
         </div>
-    ) : (
-        <div className="py-16 px-5 flex flex-col">
+    ) : (imageUrls?.length
+        ? <div className="py-16 px-5 flex flex-col">
             <div className="flex flex-col gap-2 items-center justify-center  py-10 md:py-20">
                 <div
-                    className="flex items-center justify-center cooper text-[35px] md:text-[50px] text-center text-[#917461] font-semibold"
+                    className="flex items-center justify-center calvino tracking-wider text-[35px] md:text-[50px] text-center text-[black] font-semibold"
                     data-aos-duration="2000"
                     data-aos="fade-down"
                 >
                     {location?.state?.name}.
                 </div>
-                <div className='cooper text-[12px] md:text-[15px] tracking-[1px] text-[#917461]' data-aos-duration="2500" data-aos="fade-down">
+                <div className='poppins tracking-[1px] text-[12px] md:text-[15px]  text-[#fc88d2]' data-aos-duration="2500" data-aos="fade-down">
                     Projects
                 </div>
             </div>
-
-            {imageUrls.length ? (
-                <CustomGallery imageUrls={imageUrls} />
-            ) : (
-                <div className="flex flex-col gap-5 my-20">
-                    <div
-                        className="flex flex-col items-center justify-center gap-3"
-                        data-aos="zoom-in"
-                        data-aos-duration="1250"
-                    >
-                        <span className="cooper text-[25px] md:text-[35px] text-custom-army_green text-center">
-                            Projects Coming Soon!
-                        </span>
-                        <span className="text-[12px] md:text-[14px] text-custom-army_green text-center">
-                            This category is currently being updated. Please check back soon for new and exciting
-                            projects.
-                        </span>
-                    </div>
-                    <div
-                        className="flex items-center justify-center"
-                        data-aos="zoom-in"
-                        data-aos-duration="1250"
-                    >
-                        <button
-                            className="bg-[#ffb5d5] text-custom-army_green hover:bg-[#fdbdd9] transition-all px-4 py-2 text-[10px] md:text-[12px] rounded-full font-medium w-[150px]"
-                            onClick={() => navigate('/contact-me')}
-                        >
-                            Contact Me
-                        </button>
-                    </div>
-                </div>
-            )}
+            <CustomGallery imageUrls={imageUrls} />
         </div>
+        : <div className="flex flex-col gap-5 h-screen items-center justify-center">
+            <div
+                className="flex flex-col items-center justify-center gap-3"
+                data-aos="zoom-in"
+                data-aos-duration="1250"
+            >
+                <span className="cooper text-[25px] md:text-[35px] text-custom-army_green text-center">
+                    Projects Coming Soon!
+                </span>
+                <span className="text-[12px] md:text-[14px] text-custom-army_green text-center">
+                    This category is currently being updated. Please check back soon for new and exciting
+                    projects.
+                </span>
+            </div>
+            <div
+                className="flex items-center justify-center"
+                data-aos="zoom-in"
+                data-aos-duration="1250"
+            >
+                <button
+                    className="bg-[#fc88d2] text-custom-army_green hover:bg-[#fc88d2] transition-all px-4 py-2 text-[10px] md:text-[12px] rounded-full font-medium w-[150px]"
+                    onClick={() => navigate('/contact-me')}
+                >
+                    Contact Me
+                </button>
+            </div>
+        </div>
+
+
     );
 };
 

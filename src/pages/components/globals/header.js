@@ -30,12 +30,11 @@ const Header = () => {
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
-
     const menuItems = ["/", "/portfolio", "/about-me", "/contact-me"]
 
     return (
         <header className={`flex items-center justify-between transition-all duration-300 grid-cols-2 md:grid-cols-3 py-4 px-5 md:px-10 
-             ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-black bg-black' : "absolute top-0 left-0 right-0 z-[10] bg-transparent border-b border-transparent"}
+             ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-black bg-black' : `absolute top-0 left-0 right-0 z-[10] ${window.location.pathname !== "/" || window?.innerWidth < 768 ? "bg-black border-b border-black" : "bg-transparent border-b border-transparent"} `}
              `}
         >
             {/* Logo */}
@@ -49,8 +48,8 @@ const Header = () => {
                     <span
                         key={index}
                         onClick={() => { navigate(path); window.scrollTo(0, 0); }}
-                        className={`uppercase cursor-pointer text-center calvino font-semibold tracking-[0.2em] transition-all  rounded-full   px-4 py-2
-                            ${path === window?.location?.pathname ? "bg-[#ec8ecf] border-[#ec8ecf] text-white" : "text-black bg-white border-white hover:border-[#ec8ecf] hover:bg-[#ec8ecf]"}
+                        className={`uppercase cursor-pointer text-center poppins font-semibold tracking-[0.2em] transition-all  rounded-full   px-4 py-2
+                            ${path === window?.location?.pathname ? "bg-[#fc88d2] border-[#fc88d2] text-white" : "text-black bg-white border-white hover:border-[#fc88d2] hover:bg-[#fc88d2]"}
                             ${isSticky ? "text-[8px] border" : "text-[10px] border"}
                        `}
                     >
@@ -61,7 +60,7 @@ const Header = () => {
 
             {/* Hamburger Menu for Mobile/Tablets */}
             <div className='md:hidden flex items-center justify-end'>
-                <button onClick={toggleDrawer} className={`${isSticky ? "text-custom-main_green" : "text-custom-main_green"}`}>
+                <button onClick={toggleDrawer} className={`${isSticky ? "text-white" : "text-white"}`}>
                     <AiOutlineMenu size={20} />
                 </button>
             </div>
@@ -75,13 +74,13 @@ const Header = () => {
                 closeIcon={false}
                 width={"100%"}
                 height="100vh"
-                className="p-0 m-0 transition-all duration-500"
+                className="p-0 m-0 transition-all duration-500 !bg-black"
             // bodyStyle={{ height: '100%', padding: '20px' }}
             >
-                <div className="flex flex-col gap-5 h-[85%]">
+                <div className="flex flex-col gap-5 h-[85%] bg-black">
                     <div className='flex items-center justify-between'>
                         <img src={logo} alt="Logo" className="w-[90px] h-auto" />
-                        <AiOutlineClose size={15} onClick={toggleDrawer} className='text-black' />
+                        <AiOutlineClose size={15} onClick={toggleDrawer} className='text-white' />
                     </div>
                     <div className='flex flex-col gap-5 mt-5'>
                         {menuItems.map((path, index) => (
@@ -90,8 +89,8 @@ const Header = () => {
                                 onClick={() => { navigate(path); toggleDrawer(); }}
                                 className={`ml-1 text-black font-medium text-[12px] cursor-pointer capitalize
                                  ${window.location.pathname === path
-                                        ? "underline underline-offset-8 decoration-2 decoration-custom-main_green text-custom-main_green font-bold"
-                                        : ""
+                                        ? "underline underline-offset-8 decoration-2 decoration-[#fc88d2] text-[#fc88d2] font-bold"
+                                        : "text-white"
                                     }`}
                             >
                                 {path === "/" ? "Home" : path.replace("/", "").replace("-", " ")}
@@ -100,9 +99,9 @@ const Header = () => {
                     </div>
                     <div className='ml-1 flex items-center border-t border-t-[#B0B3BC] pt-2'>
                         <div className='flex items-center gap-4 mt-2'>
-                            <InstagramFilled className='text-[25px] text-custom-main_green' />
-                            <LinkedinFilled className='text-[25px] text-custom-main_green' />
-                        </div>
+                            <InstagramFilled className='text-[25px] text-[#fc88d2]' onClick={() => window.open("https://www.instagram.com/sumaiyadraws/", "_blank")} />
+                            <LinkedinFilled className='text-[25px] text-[#fc88d2]' onClick={() => window.open("https://www.linkedin.com/in/sumaiya-ghani-736322221/", "_blank")} />
+                            0                        </div>
                         {/* <CustomButton type="yellowFilled" text="Contact Us" className="mt-10" /> */}
                     </div>
                 </div>

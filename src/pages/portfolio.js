@@ -37,7 +37,7 @@ const Portfolio = () => {
 
     const ComponentMap = ({ name, projects, thumbnail, index, _id }) => (
         <div
-            className="relative w-full h-[80vh] cursor-pointer"
+            className="relative w-full h-[80vh] cursor-pointer group"
             onClick={() => navigate(`/category/${_id}`, { state: { name } })}
             data-aos-duration="2000"
             data-aos="zoom-in"
@@ -46,23 +46,23 @@ const Portfolio = () => {
             <img
                 src={thumbnail}
                 alt="Thumbnail"
-                className="absolute inset-0 w-full h-full object-cover rounded-3xl blur-sm"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl group-hover:blur-sm transition-all duration-300"
             />
 
             {/* Heading Container */}
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                <div className='flex flex-col gap-1 items-center bg-custom-main_creame p-2 rounded-3xl'>
+                <div className='flex flex-col gap-1 items-center p-20 rounded-full'>
                     {/* <span className="text-custom-main_green text-[10px] font-semibold tracking-[1px]">
                         Service.
                     </span> */}
-                    <h2 className="text-[#917461] text-[20px] md:text-[30px] sm:text-[40px] font-semibold text-center">
+                    <h2 className="text-[white] text-[20px] md:text-[60px] sm:text-[40px] font-semibold text-center calvino tracking-wider">
                         {name}.
                     </h2>
                 </div>
             </div>
 
             {/* Optional Dark Overlay for Better Readability */}
-            <div className="absolute inset-0 bg-black bg-opacity-30 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 rounded-3xl"></div>
         </div>
     );
 
@@ -73,7 +73,7 @@ const Portfolio = () => {
                 <Loader page="services" />
             </div>
             : <div className='flex flex-col py-14'>
-                <div className='flex items-center justify-center cooper text-[35px] sm:text-[50px] py-10 md:py-20 text-[#917461] font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
+                <div className='flex items-center justify-center tracking-wider text-[35px] sm:text-[50px] py-10 md:py-20 text-[black] calvino font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
                 <div className={`flex flex-col gap-10 sm:gap-20 my-10 px-5 sm:px-14 ${!services?.length ? "w-full h-[50vh]" : ""}`}>
                     {services?.length
                         ? services?.sort((a, b) => a?.sortOrder - b?.sortOrder)?.map((service, index) => <ComponentMap {...service} index={index} />)
@@ -83,7 +83,7 @@ const Portfolio = () => {
                                 <span className='text-[14px] text-custom-army_green text-center'>The services are currently being updated. Please check back soon for new and exciting services.</span>
                             </div>
                             <div className='flex items-center justify-center' data-aos="zoom-in" data-aos-duration="1250">
-                                <button className='bg-[#ffb5d5] text-custom-army_green hover:bg-[#fdbdd9] transition-all px-4 py-2 text-[12px] rounded-full font-medium w-[150px]' onClick={() => navigate("/contact-me")}>Contact Me</button>
+                                <button className='bg-[#fc88d2] text-custom-army_green hover:bg-[#fdbdd9] transition-all px-4 py-2 text-[12px] rounded-full font-medium w-[150px]' onClick={() => navigate("/contact-me")}>Contact Me</button>
                             </div>
                         </div>
                     }

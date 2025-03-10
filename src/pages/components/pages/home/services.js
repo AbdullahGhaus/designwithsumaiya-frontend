@@ -36,9 +36,9 @@ const SliderSection = () => {
 
     return (
         URLs?.length
-            ? <div className="flex flex-col gap-10 p-10">
-                <span className='calvino font-semibold text-[50px] tracking-wide'>Some of my fav work</span>
-                <div className='grid grid-cols-3 gap-14 justify-items-center px-20'>
+            ? <div className="flex flex-col gap-10 px-5 md:p-10">
+                <span className='calvino font-semibold text-[30px] md:text-[50px] tracking-wide'>Some of my fav work</span>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-14 justify-items-center md:px-20'>
                     {URLs?.map(file => {
                         const extension = file?.split('.').pop().toLowerCase(); // Extract and normalize extension
                         if (['jpg', 'jpeg', 'png'].includes(extension)) {
