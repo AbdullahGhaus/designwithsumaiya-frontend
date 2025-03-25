@@ -3,7 +3,7 @@ import girl from '../../../../assets/images/girl.jpg';
 
 const Landing = () => {
     return (
-        <div className="h-screen w-full">
+        <div className="w-full">
             {/* Video section (visible on tablets and larger screens) */}
             <div className="hidden md:block h-full w-full">
                 <video

@@ -55,7 +55,7 @@ const Portfolio = () => {
                     {/* <span className="text-custom-main_green text-[10px] font-semibold tracking-[1px]">
                         Service.
                     </span> */}
-                    <h2 className="text-[white] text-[20px] md:text-[60px] sm:text-[40px] font-semibold text-center calvino tracking-wider">
+                    <h2 className="text-[white] text-[20px] md:text-[30px] sm:text-[20px] font-semibold text-center poppins ">
                         {name}.
                     </h2>
                 </div>
@@ -73,7 +73,7 @@ const Portfolio = () => {
                 <Loader page="services" />
             </div>
             : <div className='flex flex-col py-14'>
-                <div className='flex items-center justify-center tracking-wider text-[35px] sm:text-[50px] py-10 md:py-20 text-[black] calvino font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
+                <div className='flex items-center justify-center  text-[35px] sm:text-[50px] py-10 md:py-20 poppins text-[black] font-semibold' data-aos-duration="2000" data-aos="fade-down">Portfolio.</div>
                 <div className={`flex flex-col gap-10 sm:gap-20 my-10 px-5 sm:px-14 ${!services?.length ? "w-full h-[50vh]" : ""}`}>
                     {services?.length
                         ? services?.sort((a, b) => a?.sortOrder - b?.sortOrder)?.map((service, index) => <ComponentMap {...service} index={index} />)

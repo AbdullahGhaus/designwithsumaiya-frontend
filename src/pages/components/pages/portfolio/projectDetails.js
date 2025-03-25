@@ -45,7 +45,7 @@ const ProjectDetails = () => {
             </div>
             : <>
                 <div className='py-10 md:py-20 flex flex-col items-center justify-center'>
-                    <div className='calvino tracking-wider text-[35px] md:text-[50px] pt-12 text-[black] font-semibold' data-aos-duration="2000" data-aos="fade-down">{data?.name}.</div>
+                    <div className='poppins text-[35px] md:text-[50px] pt-12 text-[black] font-semibold' data-aos-duration="2000" data-aos="fade-down">{data?.name}.</div>
                     <div className='poppins text-[12px] md:text-[15px] tracking-[1px] text-[#fc88d2] cursor-pointer' data-aos-duration="2500" data-aos="fade-down" onClick={() => navigate(`/category/${data?.categoryID?._id}`, { state: { name: data?.categoryID?.name } })}>
                         Category - {data?.categoryID?.name}
                     </div>

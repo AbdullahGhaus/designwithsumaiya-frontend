@@ -93,14 +93,15 @@ const CategoryDetail = () => {
                         onClick={() => navigate(`/project/${id}`)}
                         key={index}
                     >
-                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/70 flex flex-col items-center justify-center z-[1] transition-all duration-300 ">
-                            <span className="text-[28px] text-center font-bold p-2 rounded-md text-white calvino tracking-wider">{name}</span>
-                        </div>
+                        {/* <div className="absolute inset-0 bg-black/30 group-hover:bg-black/70 flex flex-col items-center justify-center z-[1] transition-all duration-300 ">
+                            <span className="text-[18px] text-center font-semibold p-2 rounded-md text-white poppins">{name}</span>
+                        </div> */}
                         <img
                             src={url || logo}
                             alt={`Gallery ${index}`}
                             className={`w-[400px] h-[400px]  ${url ? "object-cover" : "object-contain"}`}
                         />
+                        <span className="text-[12px] text-center font-semibold p-2 rounded-md text-black poppins">{name}</span>
 
 
                     </div>
@@ -117,7 +118,7 @@ const CategoryDetail = () => {
         ? <div className="py-16 px-5 flex flex-col">
             <div className="flex flex-col gap-2 items-center justify-center  py-10 md:py-20">
                 <div
-                    className="flex items-center justify-center calvino tracking-wider text-[35px] md:text-[50px] text-center text-[black] font-semibold"
+                    className="flex items-center justify-center poppins  text-[35px] md:text-[50px] text-center text-[black] font-semibold"
                     data-aos-duration="2000"
                     data-aos="fade-down"
                 >

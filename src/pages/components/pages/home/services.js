@@ -49,12 +49,13 @@ const SliderSection = () => {
                             />
                         } else if (extension === 'mp4') {
                             return <video
-                                className="h-[500px] w-full object-fill rounded-md"
+                                className="h-full w-full object-fill rounded-md"
                                 src={file} // URL of the video
-                                controls={false} // Shows the default video controls
+                                controls={true} // Shows the default video controls
                                 muted={true} // Video will not autoplay muted, user can play it manually
                                 loop={true} // Does not loop, user controls playback
                                 autoPlay
+                                
                             />
                         }
                     })}
